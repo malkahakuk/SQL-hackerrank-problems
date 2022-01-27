@@ -307,7 +307,10 @@ where LAT_N is the northern latitude and LONG_W is the western longitude.
 
 **Solution**
 ```sql
-SELECT DISTINCT CITY FROM STATION WHERE (CITY LIKE 'A%' OR CITY LIKE 'E%' OR CITY LIKE 'I%' OR CITY LIKE 'O%' OR CITY LIKE 'U%') AND (CITY LIKE '%a' OR CITY LIKE '%e' OR CITY LIKE '%i' OR CITY LIKE '%o' OR CITY LIKE '%u') order by city;      
+SELECT DISTINCT city
+FROM station 
+WHERE LEFT(city, 1) IN ('A','E','I','O','U') AND RIGHT(city, 1) IN ('a','e','i','o','u')
+ORDER BY city;  
 ```
 
 ###**[Weather Observation Station 9](https://www.hackerrank.com/challenges/weather-observation-station-9/problem)**
